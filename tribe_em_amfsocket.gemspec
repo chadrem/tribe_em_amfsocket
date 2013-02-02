@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ['chad@remesch.com']
   gem.description   = %q{Amf Socket Ruby wrapper for Tribe EM.}
   gem.summary       = %q{Add Amf Socket functionaly on top of Tribe EM.}
-  gem.homepage      = ''
+  gem.homepage      = 'https://github.com/chadrem/tribe_em_amfsocket'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
