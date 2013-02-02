@@ -17,6 +17,32 @@ Or install it yourself as:
 
     $ gem install tribe_em_amfsocket
 
+## Usage
+
+    # Create a custom connection actor class.
+    class EchoConnection < Tribe::EM::AmfSocket::Connection
+      private
+
+      def on_post_init(event)
+        puts "Actor (#{identifier}) connected to client using thread (#{Thread.current.object_id})."
+        super
+      end
+      
+      def on_unbind(event)
+        puts "Actor (#{identifier}) disconnected from client using thread (#{Thread.current.object_id})."
+        super
+      end
+
+      def on_receive_message(event)
+        puts "Actor (#{identifier}) received message (command=#{event.data.command}, params=#{event.data.params} using thread (#{Thread.current.object_id})."
+        write_message(event.data.command, event.data.params)
+        enqueue(:shutdown)
+      end
+    end
+
+    # Create your server actor.
+    server = Tribe::EM::TcpServer.new('localhost', 9000, EchoConnection)
+
 ## Contributing
 
 1. Fork it
