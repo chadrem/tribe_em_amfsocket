@@ -1,6 +1,7 @@
-# TribeEmAmfsocket
+# Tribe EM AMF Socket
 
-TODO: Write a gem description
+This Ruby gem provides AMF Socket bindings for [Tribe EM] (https://github.com/chadrem/tribe_em "Tribe EM").
+Currently sending and receive messages is integrated (requests are not).
 
 ## Installation
 
@@ -15,10 +16,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install tribe_em_amfsocket
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
