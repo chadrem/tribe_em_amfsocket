@@ -38,7 +38,7 @@ module Tribe
         end
 
         #
-        # Public methods.  Call these from the associated actor.
+        # Public methods.  Call these from the associated actor only.
         #
 
         public

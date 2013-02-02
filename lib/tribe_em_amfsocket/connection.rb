@@ -6,31 +6,21 @@ module Tribe
           return Tribe::EM::AmfSocket::ActorProxy
         end
 
-        #
-        # Actor event handlers.
-        #
-
         private
 
-        # Override me and call super.
+        # Override and and call super as necessary.
         def on_post_init(event)
           super
         end
 
-         # Override me and call super.
+        # Override and and call super as necessary.
         def on_unbind(event)
           super
         end
 
-        # Override me and call super.
+        # Override and and call super as necessary.
         def on_receive_message(event)
         end
-
-        #
-        # Private methods.
-        #
-
-        private
 
         def write(data)
           raise 'This method is not available with AMF Socket connections.'
