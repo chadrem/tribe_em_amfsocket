@@ -17,6 +17,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_dependency('tribe_em', '0.0.6')
+  gem.add_dependency('tribe_em', '~> 0.1')
   gem.add_dependency('amf_socket', '0.3.1')
 end
