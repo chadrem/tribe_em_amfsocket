@@ -8,26 +8,27 @@ module Tribe
 
         private
 
-        # Override and and call super as necessary.
-        def on_post_init(event)
-          super
-        end
-
-        # Override and and call super as necessary.
-        def on_unbind(event)
-          super
-        end
-
-        # Override and and call super as necessary.
-        def on_receive_message(event)
-        end
-
         def write(data)
-          raise 'This method is not available with AMF Socket connections.'
+          raise 'This method can not be used with AMF Socket.'
         end
 
         def write_message(command, params = {})
-          @actor_proxy.write_message(command, params)
+          @_actor_proxy.write_message(command, params)
+        end
+
+        #
+        # Command handlers.
+        #
+
+        def on_receive_message(event)
+          receive_message_handler(event.data)
+        end
+
+        #
+        # System handlers.
+        #
+
+        def receive_message_handler(message)
         end
       end
     end

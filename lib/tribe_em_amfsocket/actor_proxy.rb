@@ -16,7 +16,7 @@ module Tribe
         end
 
         #
-        # EM Callbacks.  Don't call these directly.
+        # EM Callbacks.
         #
 
         public
@@ -38,7 +38,7 @@ module Tribe
         end
 
         #
-        # Public methods.  Call these from the associated actor only.
+        # Public methods.  Call these from the associated actor.
         #
 
         public

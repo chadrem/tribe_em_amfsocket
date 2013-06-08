@@ -20,28 +20,30 @@ Or install it yourself as:
 ## Usage
 
     # Create a custom connection actor class.
-    class EchoConnection < Tribe::EM::AmfSocket::Connection
+    class EchoConn < Tribe::EM::AmfSocket::Connection
       private
-
-      def on_post_init(event)
-        puts "Actor (#{identifier}) connected to client using thread (#{Thread.current.object_id})."
+      def exception_handler(e)
         super
+        puts concat_e("EchoConn (#{identifier}) died.", e)
       end
 
-      def on_unbind(event)
-        puts "Actor (#{identifier}) disconnected from client using thread (#{Thread.current.object_id})."
-        super
+      def post_init_handler
+        puts "EchoConn (#{identifier}) connected to client using thread (#{Thread.current.object_id})."
       end
 
-      def on_receive_message(event)
-        puts "Actor (#{identifier}) received message (command=#{event.data.command}, params=#{event.data.params} using thread (#{Thread.current.object_id})."
-        write_message(event.data.command, event.data.params)
+      def unbind_handler
+        puts "EchoConn (#{identifier}) disconnected from client using thread (#{Thread.current.object_id})."
+      end
+
+      def receive_message_handler(message)
+        puts "EchoConn (#{identifier}) received message (message=#{message} using thread (#{Thread.current.object_id})."
+        write_message(message.command, message.params)
         shutdown!
       end
     end
 
     # Create your server actor.
-    server = Tribe::EM::TcpServer.new('localhost', 9000, EchoConnection)
+    server = Tribe::EM::TcpServer.new('localhost', 9000, EchoConn)
 
 ## Contributing
 
