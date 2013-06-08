@@ -1,6 +1,6 @@
 # Attempt to provide thread-safe communication between EventMachine and AMF Socket.
 # 1. Always use EM.schedule to push work to the reactor thread.
-# 2. Always use @actor.enqueue to push work to the actor's thread pool.
+# 2. Always use @actor.message! to push work to the actor's thread pool.
 
 module Tribe
   module EM
@@ -24,17 +24,17 @@ module Tribe
         def post_init
           super
 
-          @actor.enqueue(:post_init, nil)
+          @actor.message!(:post_init, nil)
         end
 
         def unbind
           super
 
-          @actor.enqueue(:unbind, nil)
+          @actor.message!(:unbind, nil)
         end
 
         def receive_message(message)
-          @actor.enqueue(:receive_message, message)
+          @actor.message!(:receive_message, message)
         end
 
         #

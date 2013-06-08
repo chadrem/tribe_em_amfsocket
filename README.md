@@ -27,7 +27,7 @@ Or install it yourself as:
         puts "Actor (#{identifier}) connected to client using thread (#{Thread.current.object_id})."
         super
       end
-      
+
       def on_unbind(event)
         puts "Actor (#{identifier}) disconnected from client using thread (#{Thread.current.object_id})."
         super
@@ -36,7 +36,7 @@ Or install it yourself as:
       def on_receive_message(event)
         puts "Actor (#{identifier}) received message (command=#{event.data.command}, params=#{event.data.params} using thread (#{Thread.current.object_id})."
         write_message(event.data.command, event.data.params)
-        enqueue(:shutdown)
+        shutdown!
       end
     end
 
