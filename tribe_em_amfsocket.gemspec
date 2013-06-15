@@ -18,5 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   gem.add_dependency('tribe_em', '~> 0.3')
-  gem.add_dependency('amf_socket', '0.3.1')
+  gem.add_dependency('amf_socket', '~> 0.3')
 end
